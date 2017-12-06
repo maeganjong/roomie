@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
                 .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
 
 
-        for(Profile profile : Utils.loadProfiles(this.getApplicationContext())){
+        /**for(Profile profile : Utils.loadProfiles()){
             mSwipeView.addView(new TinderCard(mContext, profile, mSwipeView));
-        }
+        }**/
 
         findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
             @Override
