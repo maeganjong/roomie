@@ -29,7 +29,7 @@ public class Utils {
 
     private static final String TAG = "Utils";
 
-    final JSONObject profiles = new JSONObject();
+    public static JSONArray localProfiles = new JSONArray();
 
 
 
@@ -45,6 +45,24 @@ public class Utils {
                 Profile profile = gson.fromJson(array.getString(i), Profile.class);
                 profileList.add(profile);
             }
+            for(int i=0;i<localProfiles.length();i++) {
+                Profile profile = gson.fromJson(localProfiles.getString(i), Profile.class);
+                profileList.add(profile);
+            }
+
+            /** profiles = new JSONArray();
+
+            for (int i=0; i<profileList.size(); i++) {
+                JSONObject user = new JSONObject();
+                user.put("url",profileList.get(i).getImageUrl());
+                user.put("name",profileList.get(i).getName());
+                user.put("age",profileList.get(i).getAge());
+                user.put("description",profileList.get(i).getDescription());
+                user.put("college",profileList.get(i).getCollege());
+                user.put("username",profileList.get(i).getUsername());
+                user.put("password",profileList.get(i).getPassword());
+                profiles.put(user);
+            } **/
             return profileList;
         }catch (Exception e){
             e.printStackTrace();
