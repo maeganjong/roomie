@@ -1,7 +1,5 @@
 package test.mindorks.swipe.tinderswipe;
 
-import android.app.AlertDialog;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -11,57 +9,33 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.FileWriter;
 
-/**
- * Created by janisharali on 21/08/16.
- */
-public class Utils extends DialogFragment {
+
+
+public class Utils {
 
     private static final String TAG = "Utils";
-    private DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-    public void loadProfiles(){
-    // Read from the database
-    ValueEventListener dbListen = new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            String value = dataSnapshot.getValue(String.class);
-            /**CharSequence text = "H";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-            builder.setMessage("message")
-                    .setTitle("title");
-            AlertDialog dialog = builder.create();**/
-        }
+    final JSONObject profiles = new JSONObject();
 
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-        }
-    };
-    database.addValueEventListener(dbListen);
 
-    }
-/**
-    public static List<Profile> loadProfiles(Context context){
+
+
+
+     public static List<Profile> loadProfiles(Context context){
         try{
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
@@ -95,7 +69,7 @@ public class Utils extends DialogFragment {
             return null;
         }
         return json;
-    }**/
+    }
 
     public static Point getDisplaySize(WindowManager windowManager){
         try {
@@ -116,4 +90,7 @@ public class Utils extends DialogFragment {
     public static int dpToPx(int dp) {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
+
+
+
 }

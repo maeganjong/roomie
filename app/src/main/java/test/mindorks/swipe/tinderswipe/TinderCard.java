@@ -23,9 +23,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeView;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
-/**
- * Created by janisharali on 19/08/16.
- */
+
 @Layout(R.layout.tinder_card_view)
 public class TinderCard {
 
@@ -63,7 +61,7 @@ public class TinderCard {
                 .bitmapTransform(multi)
                 .into(profileImageView);
         nameAgeTxt.setText(mProfile.getName() + ", " + mProfile.getAge());
-        locationNameTxt.setText(mProfile.getLocation());
+        locationNameTxt.setText(mProfile.getDescription());
     }
 
     @SwipeHead

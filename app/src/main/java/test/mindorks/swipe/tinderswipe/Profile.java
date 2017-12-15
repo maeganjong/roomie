@@ -3,9 +3,7 @@ package test.mindorks.swipe.tinderswipe;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by janisharali on 29/08/16.
- */
+
 public class Profile {
 
     @SerializedName("name")
@@ -20,9 +18,23 @@ public class Profile {
     @Expose
     private Integer age;
 
-    @SerializedName("location")
+    @SerializedName("college")
     @Expose
-    private String location;
+    private Integer college;
+
+    @SerializedName("description")
+    @Expose
+    private String description;
+
+    @SerializedName("username")
+    @Expose
+    private String username;
+
+    @SerializedName("password")
+    @Expose
+    private String password;
+
+
 
     public String getName() {
         return name;
@@ -48,11 +60,31 @@ public class Profile {
         this.age = age;
     }
 
-    public String getLocation() {
-        return location;
+    public String getDescription() {
+        return description;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getCollege() { return college; }
+
+    public void setCollege(Integer college) {this.college = college; }
 }
