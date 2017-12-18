@@ -14,10 +14,6 @@ public class GreetingActivity extends AppCompatActivity {
 
     Button logIn;
     Button signUp;
-    EditText usernamet;
-    String username;
-    EditText passwordt;
-    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +22,16 @@ public class GreetingActivity extends AppCompatActivity {
 
         logIn = (Button) findViewById(R.id.logbtn);
         signUp = (Button) findViewById(R.id.signbtn);
-        usernamet = (EditText) findViewById(R.id.userName);
-        username = usernamet.getText().toString();
-        passwordt = (EditText) findViewById(R.id.password);
-        password = passwordt.getText().toString();
 
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String username = ((EditText)findViewById(R.id.userName)).getText().toString();
+                String password = ((EditText)findViewById(R.id.password)).getText().toString();
+
+                boolean displayToast = true;
+
                 Context context1 = GreetingActivity.this.getApplicationContext();
                 for(Profile profile : Utils.loadProfiles(context1)) {
 
@@ -41,15 +39,17 @@ public class GreetingActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(GreetingActivity.this, MainActivity.class);
                         startActivity(intent);
+                        displayToast = false;
                     }
                 }
+                if(displayToast) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Username or password is incorrect";
+                    int duration = Toast.LENGTH_SHORT;
 
-                Context context = getApplicationContext();
-                CharSequence text = "Username or password is incorrect";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
 
             }
         });
